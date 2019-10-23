@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -57,9 +58,18 @@ public class MainActivity extends AppCompatActivity {
     }
     public void on_button_click(View view){
         TextView tv = this.findViewById(R.id.textView);
+        TextView tvScore = this.findViewById(R.id.textView4);
+        EditText input = (EditText)this.findViewById(R.id.editText4);
+        String val = input.getText().toString();
+        int finalVal = Integer.parseInt(val);
         Random r = new Random();
         int number = r.nextInt(6);
-
+        if(finalVal == number){
+            val = tvScore.getText().toString();
+            int current = Integer.parseInt(val);
+            current++;
+            tvScore.setText(Integer.toString(current));
+        }
         tv.setText(Integer.toString(number));
     }
 }
